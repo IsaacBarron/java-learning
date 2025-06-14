@@ -5,6 +5,7 @@ import static org.example.udemy.tim.data.structures.arrays.ArrayHelper.swap;
 
 /**
  * Selection sort
+ * <p>
  * To accomplish this you need to loop through the entire list multiple times.
  * Find the largest number each time and move it to the end of the unsorted index.
  * <p>
@@ -21,22 +22,24 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] intArray = {99, 75, 22, 11, 49, 1};
 
-        myAttemptSelectionSort(intArray);
+//        myAttemptSelectionSort(intArray);
         courseSolution(intArray);
     }
 
 
     private static void courseSolution(int[] intArray) {
         int steps = 0;
-        for (int lastUnsortedIndex = intArray.length -1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
-            int largest = 0;
+        for (int lastUnsortedIndex = intArray.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
+            int largestIndex = 0;
+            System.out.println("lastUnsortedIndex " + lastUnsortedIndex + " : " + intArray[lastUnsortedIndex] );
 
             for(int i = 1; i <= lastUnsortedIndex; i++){
                 steps++;
-                if(intArray[i] < intArray[largest]) {
-                    swap(intArray, i, largest);
+                if(intArray[i] > intArray[largestIndex]) {
+                    largestIndex = i;
                 }
             }
+            swap(intArray, largestIndex, lastUnsortedIndex);
         }
         System.out.println();
         printArray(intArray);
